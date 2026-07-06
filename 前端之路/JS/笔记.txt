@@ -1,0 +1,75 @@
+JavaScript 核心知识点总结
+
+1. JS 的三种引入方式
+- 行内脚本：直接写在 HTML 标签的事件属性中
+- 内部脚本：写在 `<script>` 标签内
+- 外部脚本：通过 `<script src="...">` 引入外部 JS 文件
+
+2. 变量声明
+- var：函数作用域，存在变量提升
+- let：块级作用域，不会变量提升
+- const：块级作用域，常量，声明时必须赋值
+
+3. 数据类型
+- 基本类型：string、number、boolean、undefined、null、symbol
+- 引用类型：object（包括数组、函数等）
+- typeof 运算符用于检测数据类型
+
+4. 运算符
+- 算术运算符：+、-、*、/、%、++、--
+- 比较运算符：==、===、!=、!==、>、<、>=、<=
+- 逻辑运算符：&&、||、!
+- 赋值运算符：=、+=、-=、*=、/=
+
+5. 条件判断
+- if-else 语句
+- switch-case 语句
+- 三元运算符：condition ? expr1 : expr2
+
+6. 循环结构
+- for 循环
+- while 循环
+- do-while 循环
+- for...in（遍历对象属性）
+- for...of（遍历可迭代对象）
+
+7. 函数
+- 函数声明：function name() {}
+- 函数表达式：const fn = function() {}
+- 箭头函数：const fn = () => {}
+- 参数和返回值：return 语句
+
+8. 数组方法
+- 添加/删除：push()、pop()、shift()、unshift()
+- 遍历：forEach()、map()、filter()、reduce()
+- 查找：indexOf()、includes()、find()
+- 其他：slice()、splice()、sort()
+
+9. 对象
+- 对象字面量：const obj = {key: value}
+- 属性访问：obj.key 或 obj['key']
+- 遍历对象：for...in 循环
+- Object.keys()、Object.values()、Object.entries()
+
+10. DOM 操作
+- 获取元素：getElementById()、querySelector()、querySelectorAll()
+- 修改内容：innerHTML、textContent
+- 修改样式：style 属性
+- 添加/删除类：classList.add()、classList.remove()、classList.toggle()
+
+11. 事件处理
+- 事件绑定：addEventListener()
+- 事件类型：click、mouseover、keydown、submit 等
+- 事件对象：event 参数
+- 事件委托：利用事件冒泡
+
+12. 作用域
+- 全局作用域：在函数外声明的变量
+- 函数作用域：在函数内声明的变量
+- 块级作用域：let/const 声明的变量
+- 闭包：函数内部可以访问外部函数的变量
+
+13. 异步编程
+- setTimeout()、setInterval()
+- Promise
+- async/await
