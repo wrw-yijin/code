@@ -1,0 +1,1 @@
+console.log("Hello, World!这里是前端之路的JS外部引用示例。");
