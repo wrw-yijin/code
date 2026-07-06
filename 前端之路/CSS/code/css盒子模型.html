@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>布局盒子属性</title>
+    <style>
+        .demo
+        {
+            background-color: red;
+            border: 5px solid black;
+            display: inline-block;
+            /* 内边距 */
+            padding: 50px;
+            /* 外边距 */
+            margin: 50px;
+        }
+        .border-demo
+        {
+            background-color: rgb(114, 114, 203);
+            border-width: 5px 10px 15px 20px;
+            /* 边框宽度遵循顺时针，和对称原则 */
+            border-style: solid;
+            border-color: rgb(167, 59, 158);
+            display: inline-block;
+        }
+        /* 边框样式 */
+
+    </style>
+</head>
+<body>
+    <!-- 盒子模型示例 -->
+    <div class="demo">嘿嘿嘿哈</div>
+    <div class="border-demo">边框示例</div>
+</body>
+</html>
