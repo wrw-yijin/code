@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>浮动</title>
+    <style>
+        .father {
+            background-color: #e827a4a1;
+            border: 5px solid black;
+            /* overflow: hidden; */
+        }
+        .left-son {
+            width: 200px;
+            height: 200px;
+            background-color: rgb(91, 241, 26);
+            float: left;
+        }
+        .right-son {
+            width: 200px;
+            height: 200px;
+            background-color: rgb(177, 228, 24);
+            float: right;
+        }
+        .father::after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+        /*  这里的 `content: ""` 创建一个空的伪元素，`display: table` 使其成为一个块级元素，而 `clear: both` 则清除左、右两边的浮动。*/
+    </style>
+</head>
+<body>
+    <div class="father">
+        <div class="left-son">左浮动</div>
+        <div class="right-son">右浮动</div>
+        <div class="left-son">左浮动</div>
+        <div class="right-son">右浮动</div>
+        <div class="left-son">左浮动</div>
+        <div class="right-son">右浮动</div>
+        <div class="left-son">左浮动</div>
+        <div class="right-son">右浮动</div>
+        <div class="left-son">左浮动</div>
+        <div class="right-son">右浮动</div>
+        <div class="left-son">左浮动</div>
+        <div class="right-son">右浮动</div>
+        <span>我是span标签</span>
+    </div>
+</body>
+</html>
