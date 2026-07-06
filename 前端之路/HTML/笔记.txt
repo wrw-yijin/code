@@ -1,0 +1,295 @@
+我为您整理一份系统的 **HTML 学习笔记**，从基础概念到常用标签，适合入门和快速查阅。
+
+---
+
+# 📘 HTML 学习笔记
+
+---
+
+## 一、HTML 概述
+
+### 什么是 HTML？
+- **HTML** = **H**yper **T**ext **M**arkup **L**anguage（超文本标记语言）
+- 它不是编程语言，而是一种**标记语言**，用于描述网页结构
+- 通过**标签（Tag）** 来标记内容，告诉浏览器如何显示
+
+### HTML 文件基本结构
+```html
+<!DOCTYPE html>        <!-- 声明文档类型为 HTML5 -->
+<html lang="zh-CN">    <!-- 根元素，lang 指定语言 -->
+<head>                 <!-- 头部：元数据，不显示在页面上 -->
+    <meta charset="UTF-8">  <!-- 字符编码 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>页面标题</title>  <!-- 浏览器标签栏显示 -->
+</head>
+<body>                 <!-- 主体：页面可见内容 -->
+    <h1>Hello World</h1>
+    <p>这是一个段落。</p>
+</body>
+</html>
+```
+
+---
+
+## 二、HTML 标签基础
+
+### 1. 标签分类
+
+| 类型 | 特点 | 示例 |
+|------|------|------|
+| **双标签** | 有开始和结束 | `<p>内容</p>` |
+| **单标签（自闭合）** | 没有结束标签 | `<img src="...">`、`<br>`、`<hr>` |
+
+### 2. 标签属性
+- 写在开始标签中，格式为 `属性名="属性值"`
+```html
+<a href="https://example.com" target="_blank">链接</a>
+<img src="photo.jpg" alt="照片描述" width="200">
+```
+
+### 3. 注释
+```html
+<!-- 这是注释，不会显示在页面上 -->
+```
+
+---
+
+## 三、常用标签速查表
+
+### 📌 文本相关
+
+| 标签 | 含义 | 示例效果 |
+|------|------|----------|
+| `<h1>` ~ `<h6>` | 标题，h1 最大，h6 最小 | 大标题 → 小标题 |
+| `<p>` | 段落 | 一段文字 |
+| `<br>` | 换行（单标签） | 强制换行 |
+| `<hr>` | 水平分割线（单标签） | —————— |
+| `<strong>` | 加粗（语义强调） | **加粗** |
+| `<em>` | 斜体（语义强调） | *斜体* |
+| `<b>` | 加粗（无语义） | **加粗** |
+| `<i>` | 斜体（无语义） | *斜体* |
+| `<u>` | 下划线 | <u>下划线</u> |
+| `<del>` | 删除线 | ~~删除线~~ |
+| `<span>` | 行内容器，无语义，用于样式 | 内联包裹 |
+| `<div>` | 块级容器，无语义，用于布局 | 块级包裹 |
+
+---
+
+### 🔗 链接与图片
+
+```html
+<!-- 超链接 -->
+<a href="https://www.example.com" target="_blank">打开新窗口访问</a>
+<a href="#section1">跳转到页面内 id 为 section1 的位置</a>
+<a href="mailto:test@email.com">发送邮件</a>
+
+<!-- 图片 -->
+<img src="images/photo.jpg" alt="图片加载失败时显示的文字" width="300">
+```
+
+---
+
+### 📋 列表
+
+```html
+<!-- 无序列表（项目符号） -->
+<ul>
+    <li>苹果</li>
+    <li>香蕉</li>
+</ul>
+
+<!-- 有序列表（数字编号） -->
+<ol>
+    <li>第一步</li>
+    <li>第二步</li>
+</ol>
+
+<!-- 定义列表（术语解释） -->
+<dl>
+    <dt>HTML</dt>
+    <dd>超文本标记语言</dd>
+    <dt>CSS</dt>
+    <dd>层叠样式表</dd>
+</dl>
+```
+
+---
+
+### 📊 表格
+
+```html
+<table border="1">           <!-- border 仅用于学习，实际用 CSS -->
+    <thead>                  <!-- 表头区 -->
+        <tr>                 <!-- 行 -->
+            <th>姓名</th>    <!-- 表头单元格（加粗居中） -->
+            <th>年龄</th>
+        </tr>
+    </thead>
+    <tbody>                  <!-- 表体区 -->
+        <tr>
+            <td>张三</td>    <!-- 普通单元格 -->
+            <td>25</td>
+        </tr>
+        <tr>
+            <td>李四</td>
+            <td>30</td>
+        </tr>
+    </tbody>
+</table>
+```
+
+**合并单元格**：
+- `colspan="2"` — 跨列合并
+- `rowspan="2"` — 跨行合并
+
+---
+
+### 📝 表单（重要）
+
+```html
+<form action="/submit" method="POST">
+    <!-- 文本输入 -->
+    <label for="name">姓名：</label>
+    <input type="text" id="name" name="username" placeholder="请输入姓名">
+
+    <!-- 密码 -->
+    <input type="password" name="pwd" placeholder="密码">
+
+    <!-- 单选按钮（name 相同则互斥） -->
+    <input type="radio" name="gender" value="男"> 男
+    <input type="radio" name="gender" value="女"> 女
+
+    <!-- 复选框 -->
+    <input type="checkbox" name="hobby" value="阅读"> 阅读
+    <input type="checkbox" name="hobby" value="运动"> 运动
+
+    <!-- 下拉菜单 -->
+    <select name="city">
+        <option value="bj">北京</option>
+        <option value="sh" selected>上海</option>  <!-- selected 默认选中 -->
+    </select>
+
+    <!-- 文本域（多行文本） -->
+    <textarea name="desc" rows="4" cols="30" placeholder="请输入描述"></textarea>
+
+    <!-- 按钮 -->
+    <button type="submit">提交</button>
+    <button type="reset">重置</button>
+    <button type="button">普通按钮</button>
+
+    <!-- 文件上传 -->
+    <input type="file" name="avatar">
+</form>
+```
+
+---
+
+### 🖼️ 多媒体
+
+```html
+<!-- 视频 -->
+<video src="video.mp4" controls width="400" loop muted poster="封面.jpg">
+    您的浏览器不支持视频播放。
+</video>
+
+<!-- 音频 -->
+<audio src="music.mp3" controls autoplay loop>
+    您的浏览器不支持音频播放。
+</audio>
+
+<!-- 嵌入外部内容（如地图、视频） -->
+<iframe src="https://www.example.com" width="600" height="400"></iframe>
+```
+
+---
+
+## 四、HTML5 语义化标签（重要）
+
+| 标签 | 含义 |
+|------|------|
+| `<header>` | 页面或区块的头部 |
+| `<nav>` | 导航链接区域 |
+| `<main>` | 页面主要内容（一个页面只能有一个） |
+| `<article>` | 独立、完整的内容（如文章、帖子） |
+| `<section>` | 内容区块（如章节） |
+| `<aside>` | 侧边栏或附属信息 |
+| `<footer>` | 页面或区块的底部 |
+| `<figure>` + `<figcaption>` | 插图及其标题 |
+
+**语义化的好处**：SEO 友好、无障碍访问（屏幕阅读器）、代码可维护性高。
+
+---
+
+## 五、块级元素 vs 行内元素
+
+| 特性 | 块级元素 | 行内元素 |
+|------|----------|----------|
+| 是否独占一行 | ✅ 是 | ❌ 否（与其他行内元素同行） |
+| 可设宽高 | ✅ 可以 | ❌ 不可以（由内容撑开） |
+| 常见标签 | `<div>`、`<p>`、`<h1>`~`<h6>`、`<ul>`、`<table>` | `<span>`、`<a>`、`<img>`、`<strong>`、`<em>` |
+
+> 通过 CSS `display` 属性可以改变：`display: inline`、`display: block`、`display: inline-block`
+
+---
+
+## 六、特殊字符实体
+
+| 显示 | 实体名称 |
+|------|----------|
+| `<` | `&lt;` |
+| `>` | `&gt;` |
+| `&` | `&amp;` |
+| `"` | `&quot;` |
+| `'` | `&apos;` |
+| 空格 | `&nbsp;`（不换行空格） |
+| © 版权 | `&copy;` |
+| ® 注册商标 | `&reg;` |
+
+---
+
+## 七、路径写法
+
+| 写法 | 含义 | 示例 |
+|------|------|------|
+| 相对路径 | 相对于当前文件位置 | `images/photo.jpg` |
+| 上一级目录 | `../` 表示返回上级 | `../images/photo.jpg` |
+| 根目录 | `/` 表示网站根目录 | `/images/photo.jpg` |
+| 绝对路径 | 完整 URL | `https://example.com/photo.jpg` |
+
+---
+
+## 八、常用 Meta 标签
+
+```html
+<!-- 字符编码 -->
+<meta charset="UTF-8">
+
+<!-- 移动端适配 -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- 页面描述（SEO） -->
+<meta name="description" content="这是页面的描述文字">
+
+<!-- 关键词（SEO，已不太重要） -->
+<meta name="keywords" content="HTML, 学习, 教程">
+
+<!-- 作者 -->
+<meta name="author" content="张三">
+
+<!-- 页面自动刷新（秒） -->
+<meta http-equiv="refresh" content="5; url=https://example.com">
+```
+
+---
+
+## 九、学习建议
+
+1. **多动手写**：每个标签亲自敲一遍，在浏览器中查看效果
+2. **查看网页源码**：按 F12 或右键“检查”，看别人怎么写的
+3. **语义化优先**：尽量用语义标签，少用无意义的 `<div>` 和 `<span>`
+4. **结合 CSS 和 JavaScript**：HTML 是骨架，CSS 是衣服，JS 是动作
+5. **参考文档**：[MDN Web Docs](https://developer.mozilla.org/zh-CN/docs/Web/HTML) 是最好的学习资源
+
+---
+
+如果还需要 **CSS 学习笔记** 或 **HTML 进阶内容**（如 Canvas、SVG、Web Storage 等），随时告诉我！
