@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS 基本操作及代码</title>
+    <!-- 外部样式 -->
+    <link rel="stylesheet" href="./CSS基本操作及代码.css">
+    <!-- 内部样式 -->
+    <style>
+        .internal {
+            color: #004085;
+            background-color: #cce5ff;
+            padding: 12px;
+            border-radius: 6px;
+        }
+    </style>
+</head>
+<body>
+    <h1>CSS 的基本操作及代码演示</h1>
+    <p class="internal">这段文字使用了 <strong>内部样式</strong>。</p>
+    <p id="external">这段文字使用了 <strong>外部样式</strong>，见 CSS基本操作及代码.css。</p>
+    <p style="color: white; background: #28a745; padding: 10px;">这段文字使用了 <strong>内联样式</strong>。</p>
+
+    <section class="box-demo">
+        <h2>选择器与属性</h2>
+        <div class="card">
+            <h3>元素选择器</h3>
+            <p>p 标签默认会被外部样式中的规则影响。</p>
+        </div>
+        <div class="card special">
+            <h3>类选择器</h3>
+            <p>class="special" 的元素应用了不同的背景色。</p>
+        </div>
+        <div class="card" id="unique-card">
+            <h3>ID 选择器</h3>
+            <p>id="unique-card" 的元素有特殊边框样式。</p>
+        </div>
+    </section>
+
+    <section class="layout-demo">
+        <h2>布局与盒模型</h2>
+        <div class="layout-block">块级元素 block</div>
+        <span class="layout-inline">行内元素 inline</span>
+        <div class="layout-inline-block">inline-block 元素</div>
+    </section>
+
+    <section class="pseudo-demo">
+        <h2>伪类与伪元素</h2>
+        <button class="btn">悬停按钮</button>
+        <p class="pseudo">伪元素示例</p>
+    </section>
+
+    <section class="box-model">
+        <h2>边距与内边距</h2>
+        <div class="outer-box">
+            外边距（margin）
+            <div class="inner-box">内边距（padding）</div>
+        </div>
+    </section>
+</body>
+</html>

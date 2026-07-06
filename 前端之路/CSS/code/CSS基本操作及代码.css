@@ -1,0 +1,120 @@
+:root {
+    --primary: #0056b3;
+    --secondary: #f8f9fa;
+    --card-bg: #ffffff;
+    --border: #dee2e6;
+}
+
+body {
+    margin: 0;
+    font-family: "微软雅黑", sans-serif;
+    line-height: 1.6;
+    background-color: #f0f4f8;
+    color: #212529;
+}
+
+h1, h2 {
+    color: #0b3d91;
+}
+
+p {
+    margin: 16px 0;
+}
+
+#external {
+    color: #721c24;
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    padding: 12px;
+    border-radius: 4px;
+}
+
+.box-demo {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.card {
+    flex: 1 1 220px;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.special {
+    background-color: #e2f0fb;
+    border-color: #9ec5fe;
+}
+
+#unique-card {
+    border: 2px dashed #ff9800;
+}
+
+.layout-demo {
+    margin-top: 24px;
+}
+
+.layout-block {
+    display: block;
+    width: 100%;
+    background-color: #ffc107;
+    padding: 12px;
+    margin-bottom: 12px;
+}
+
+.layout-inline {
+    display: inline;
+    padding: 8px;
+    background-color: #17a2b8;
+    color: white;
+}
+
+.layout-inline-block {
+    display: inline-block;
+    width: 180px;
+    padding: 12px;
+    background-color: #6c757d;
+    color: white;
+    margin-left: 12px;
+}
+
+.btn {
+    background-color: var(--primary);
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #004080;
+}
+
+.pseudo::before {
+    content: "📌 ";
+}
+
+.pseudo-demo {
+    margin-top: 24px;
+}
+
+.box-model {
+    margin-top: 24px;
+}
+
+.outer-box {
+    margin: 20px;
+    padding: 20px;
+    border: 2px solid #007bff;
+    background-color: #e9f7ff;
+}
+
+.inner-box {
+    padding: 20px;
+    border: 1px solid #6c757d;
+    background-color: #ffffff;
+}
