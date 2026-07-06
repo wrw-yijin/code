@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM</title>
+</head>
+<body>
+    <button>按钮</button>
+    <h1 id="demo">id</h1>
+    <div class="demo">类</div>
+    <h2>标签</h2>
+    <script>
+        console.log(document);// document对象是DOM的根节点，代表整个HTML文档
+        console.log(document.documentElement);// document.documentElement是document对象的一个属性，代表HTML文档的根元素，即<html>标签
+        console.log(document.body);// document.body是document对象的一个属性，代表HTML文档的<body>标签
+        console.log(document.head);// document.head是document对象的一个属性，代表HTML文档的<head>标签
+            // innerText和innerHTML的区别
+        // 1. innerText是获取元素的文本内容，而innerHTML是获取元素的HTML内容。
+        document.getElementById("demo").innerText= "更改获取id为demo的h1标签的文本内容";
+        document.getElementsByClassName("demo")[0].innerHTML = "更改获取类名为demo的div标签的HTML内容";
+        document.getElementsByTagName("h2")[0].innerText = "更改获取标签名为h2的第一个标签的文本内容";
+        // 
+        document.getElementsByTagName("button")[0].onclick = function() {
+            alert("点击按钮触发事件");
+        }
+    
+    
+    
+    </script>
+</body>
+</html>

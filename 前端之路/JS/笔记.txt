@@ -71,5 +71,70 @@ JavaScript 核心知识点总结
 
 13. 异步编程
 - setTimeout()、setInterval()
-- Promise
-- async/await
+- Promise：then()、catch()、finally()
+- async/await：更简洁的异步语法
+
+14. 类型转换
+- 显式转换：Number()、String()、Boolean()、parseInt()、parseFloat()
+- 隐式转换：+、-、== 等运算符触发
+- 特殊值：NaN（非数字）、Infinity（无穷大）
+- isNaN()：判断是否为NaN
+
+15. 错误处理
+- try-catch-finally：捕获和处理异常
+- throw：手动抛出异常
+- Error 对象：SyntaxError、TypeError、ReferenceError
+
+16. ES6+ 新特性
+- 解构赋值：数组解构、对象解构
+- 扩展运算符：...（展开数组/对象）
+- 默认参数：function fn(a = 1) {}
+- 模板字符串：`Hello ${name}`
+- 箭头函数：() => {}
+- 剩余参数：function fn(...args) {}
+
+17. 类与继承
+- class 关键字定义类
+- constructor()：构造函数
+- extends：继承父类
+- super()：调用父类方法
+
+18. 模块化
+- export：导出模块
+- import：导入模块
+- export default：默认导出
+
+19. JSON 处理
+- JSON.stringify()：对象转JSON字符串
+- JSON.parse()：JSON字符串转对象
+
+20. 正则表达式
+- 创建方式：/pattern/flags 或 new RegExp()
+- 常用方法：test()、exec()、match()、replace()、search()、split()
+- 修饰符：g（全局）、i（忽略大小写）、m（多行）
+
+21. 常用内置对象
+- Math：数学计算（Math.random()、Math.round()、Math.max()等）
+- Date：日期处理
+- Array：数组操作
+- String：字符串操作
+
+22. this 指向
+- 全局作用域：指向 window（浏览器）或 global（Node.js）
+- 对象方法：指向调用方法的对象
+- 构造函数：指向实例对象
+- 箭头函数：指向外层作用域的this
+- call()/apply()/bind()：改变this指向
+
+23. 闭包应用场景
+- 数据私有化
+- 函数柯里化
+- 模块化封装
+
+24. 数组进阶方法
+- reduceRight()：从右到左累加
+- every()：判断所有元素是否满足条件
+- some()：判断是否有元素满足条件
+- findIndex()：返回满足条件的元素索引
+- flat()：扁平化数组
+- flatMap()：映射后扁平化
