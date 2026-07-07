@@ -53,9 +53,15 @@ JavaScript 核心知识点总结
 
 10. DOM 操作
 - 获取元素：getElementById()、querySelector()、querySelectorAll()
+- 获取节点关系：parentNode、children、childNodes、firstChild、lastChild
+- 同级节点：nextSibling、previousSibling、nextElementSibling、previousElementSibling
 - 修改内容：innerHTML、textContent
 - 修改样式：style 属性
 - 添加/删除类：classList.add()、classList.remove()、classList.toggle()
+- 节点创建：createElement()、createTextNode()
+- 节点插入：appendChild()、insertBefore()
+- 节点替换与删除：replaceChild()、removeChild()
+- 节点克隆：cloneNode()
 
 11. 事件处理
 - 事件绑定：addEventListener()

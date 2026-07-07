@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>表格的增删改查</title>
+    <style>
+        table {
+            width: 100%;/* 表格宽度占满父元素宽度 */
+        }
+        th, td {
+            text-align: center;/* 居中对齐 */
+        }
+    </style>
+</head>
+<body>
+    <h1 align="center">联系人列表</h1>
+    <button onclick="addRow()">增添联系人</button>
+    <!-- 表格内容标签的解释：
+        table：表格
+        thead：表格头
+        tbody：表格主体
+        tr：表格行
+        th：表格表头单元格
+        td：表格数据单元格
+    ** -->
+    <!-- table标签的解释：
+        border：表格边框
+        cellspacing：单元格间距,间距为0时,单元格之间没有间距视觉上一条线
+        cellpadding：单元格内边距,设置为5时,单元格内的内容与边框之间有5px的间距,视觉效果良好
+    ** -->
+    <table id="table" border="1" cellspacing="0" cellpadding="5">
+        <thead>
+            <tr>
+                <th>姓名</th>
+                <th>年龄</th>
+                <th>性别</th>
+                <th>联系方式</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>张三</td>
+                <td>25</td>
+                <td>男</td>
+                <td>138****1234</td>
+                <td>
+                    <button onclick="editRow(this)">编辑</button>
+                    <button onclick="deleteRow(this)">删除</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <script src="table.js"></script>
+</body>
+</html>
