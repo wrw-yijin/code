@@ -1,0 +1,258 @@
+# 后端接收前端数据笔记
+
+## 一、Flask 基础配置
+
+```python
+from flask import Flask, request, jsonify
+from flask_cors import CORS
+
+app = Flask(__name__)
+CORS(app)  # 解决跨域问题
+```
+
+## 二、路由定义与匹配
+
+### 基本语法
+```python
+@app.route('/api/json', methods=['POST'])
+def receive_json():
+    # 处理请求
+    return jsonify({"success": True})
+```
+
+### 匹配条件
+- URL 路径：`/api/json`
+- HTTP 方法：`['POST']`（可选，默认 GET）
+
+### 匹配失败的情况
+- 路径不对 → 404 Not Found
+- 方法不对 → 405 Method Not Allowed
+
+## 三、获取前端数据
+
+### 1. 获取 JSON 数据
+```python
+data = request.get_json()  # 返回字典对象
+# 或
+data = request.json
+```
+
+### 2. 获取表单数据（form）
+```python
+name = request.form.get('name')
+```
+
+### 3. 获取 URL 参数
+```python
+id = request.args.get('id')
+```
+
+### 4. 获取文件
+```python
+file = request.files['file']
+file.save('filename.jpg')
+```
+
+## 四、数据验证
+
+```python
+@app.route('/api/json', methods=['POST'])
+def receive_json():
+    data = request.get_json()
+    
+    # 检查数据是否为空
+    if not data:
+        return jsonify({"success": False, "error": "数据为空"}), 400
+    
+    # 提取字段并验证
+    name = data.get('name', '').strip()
+    age = data.get('age', '')
+    sex = data.get('sex', '').strip()
+    phone = data.get('phone', '').strip()
+    
+    # 必填字段验证
+    if not name:
+        return jsonify({"success": False, "error": "姓名不能为空"}), 400
+    
+    # 处理数据...
+    return jsonify({"success": True, "message": "数据接收成功"})
+```
+
+## 五、CORS 跨域处理
+
+### 为什么需要 CORS？
+浏览器安全机制：前端页面和后端 API 不在同一域名时，浏览器会阻止请求。
+
+### 解决方案
+```python
+from flask_cors import CORS
+
+app = Flask(__name__)
+CORS(app)  # 允许所有来源的跨域请求
+```
+
+### 预检请求（OPTIONS）
+浏览器发送 POST 请求前，会先发送 OPTIONS 请求询问服务器是否允许跨域。
+
+## 六、返回响应
+
+### 返回 JSON
+```python
+return jsonify({"success": True, "message": "成功"})
+```
+
+### 返回状态码
+```python
+return jsonify({"success": False}), 400  # 400: 请求错误
+return jsonify({"success": False}), 500  # 500: 服务器错误
+```
+
+## 七、异常处理
+
+```python
+@app.route('/api/json', methods=['POST'])
+def receive_json():
+    try:
+        # 业务逻辑...
+        return jsonify({"success": True})
+    except Exception as e:
+        # 捕获异常并返回错误信息
+        print(f"错误: {e}")
+        return jsonify({"success": False, "error": str(e)}), 500
+```
+
+## 八、连接 MySQL 数据库
+
+### 安装 pymysql
+```
+pip install pymysql
+```
+
+### 连接配置
+```python
+import pymysql
+
+conn = pymysql.connect(
+    host='localhost',
+    user='root',
+    password='123456',
+    database='text',
+    charset='utf8mb4'
+)
+cursor = conn.cursor()
+```
+
+### 插入数据
+```python
+def insert_friend(name, age, sex, phone):
+    sql = "INSERT INTO friend (姓名, 年龄, 性别, 联系方式) VALUES (%s, %s, %s, %s)"
+    cursor.execute(sql, (name, age, sex, phone))
+    conn.commit()  # 必须提交事务
+```
+
+### 注意事项
+- 数据库连接代码必须放在 `app.run()` 之前
+- 使用 `%s` 占位符防止 SQL 注入
+- 操作完成后调用 `conn.commit()` 提交
+- 出错时调用 `conn.rollback()` 回滚
+
+## 九、完整示例
+
+```python
+from flask import Flask, request, jsonify
+from flask_cors import CORS
+import pymysql
+
+app = Flask(__name__)
+CORS(app)
+
+# 数据库连接
+conn = pymysql.connect(
+    host='localhost',
+    user='root',
+    password='123456',
+    database='text',
+    charset='utf8mb4'
+)
+cursor = conn.cursor()
+
+@app.route('/api/json', methods=['POST'])
+def receive_json():
+    try:
+        data = request.get_json()
+        
+        if not data:
+            return jsonify({"success": False, "error": "数据为空"}), 400
+        
+        name = data.get('name', '').strip()
+        age = data.get('age', '')
+        sex = data.get('sex', '').strip()
+        phone = data.get('phone', '').strip()
+        
+        if not name:
+            return jsonify({"success": False, "error": "姓名不能为空"}), 400
+        
+        # 插入数据库
+        sql = "INSERT INTO friend (姓名, 年龄, 性别, 联系方式) VALUES (%s, %s, %s, %s)"
+        cursor.execute(sql, (name, age, sex, phone))
+        conn.commit()
+        
+        print(f"数据已保存: {name}, {age}, {sex}, {phone}")
+        return jsonify({"success": True, "message": "数据保存成功"})
+    
+    except Exception as e:
+        conn.rollback()
+        print(f"错误: {e}")
+        return jsonify({"success": False, "error": str(e)}), 500
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=5000, debug=True)
+```
+
+## 十、运行服务器
+
+```
+python server.py
+```
+
+服务器监听地址：http://127.0.0.1:5000
+
+## 十一、前端发送数据示例
+
+```javascript
+fetch('http://127.0.0.1:5000/api/json', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+        name: '张三',
+        age: 25,
+        sex: '男',
+        phone: '138****1234'
+    })
+})
+.then(response => response.json())
+.then(data => {
+    console.log(data);
+});
+```
+
+## 十二、常见问题
+
+1. **ModuleNotFoundError: No module named 'flask'**
+   - 解决：`pip install flask`
+
+2. **ModuleNotFoundError: No module named 'flask_cors'**
+   - 解决：`pip install flask-cors`
+
+3. **CORS 跨域错误**
+   - 解决：添加 `CORS(app)`
+
+4. **数据库连接失败**
+   - 检查 MySQL 是否启动
+   - 检查用户名、密码、数据库名是否正确
+
+5. **数据写入数据库但查询不到**
+   - 忘记调用 `conn.commit()`
+
+6. **SQL 注入风险**
+   - 使用 `%s` 占位符，不要字符串拼接
