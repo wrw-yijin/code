@@ -1,0 +1,37 @@
+实验名称：表格的增删改查
+
+1. 页面结构
+- 使用 <table>、<thead>、<tbody>、<tr>、<th>、<td> 定义联系人表格。
+- 通过 table 的 border、cellspacing、cellpadding 控制表格显示效果。
+- 使用 <button onclick="..."> 绑定按钮事件，触发 JS 函数。
+
+2. DOM 获取与定位
+- document.getElementById("table") 获取表格元素。
+- btn.parentNode.parentNode 从按钮定位到当前所在的 <tr> 行。
+- row.cells[index] 获取当前行中指定位置的单元格。
+
+3. 增加功能
+- table.insertRow(length) 在表格末尾插入新行。
+- row.insertCell(0/1/2/3/4) 在行中插入单元格。
+- 通过 innerHTML 填充单元格内容和操作按钮。
+
+4. 删除功能
+- row.parentNode.removeChild(row) 删除当前行，实现“删”。
+
+5. 修改功能
+- editRow 函数中使用 prompt() 获取用户输入并修改单元格文本。
+- 注释中还展示了将 td 改成 <input> 编辑，再用 saveRow 读取 input.value 保存的方式。
+
+6. 保存功能
+- saveRow 中通过 querySelector('input').value 读取当前单元格输入值。
+- 修改完成后恢复操作列按钮为 “编辑” 和 “删除”。
+
+7. 调试手段
+- console.log("table.js载入成功") 检查脚本是否加载。
+- console.log(row) 查看按钮所在的行对象。
+
+8. 样式说明
+- table { width: 100%; } 让表格宽度占满父元素。
+- th, td { text-align: center; } 使单元格内容居中显示。
+
+总结：本实验通过 HTML 表格结构和 JavaScript DOM 操作实现了联系人表格的增、删、改功能，掌握了节点定位、单元格访问、元素删除、文本修改等基本前端操作。
