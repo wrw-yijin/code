@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <title>移动端适配和动态HTML的实现</title>
+</head>
+<body>
+    <span style="font-size: 5rem;background-color: aquamarine;float: left;">1</span>
+    <div class="box"></div>
+    <style>
+        .box {
+            width: 5rem;
+            height: 5rem;
+            background-color: red;
+        }
+    </style>
+    <script>
+        function resetFontSize() {
+            document.documentElement.style.fontSize = screen.width/10 + 'px';
+    }
+        resetFontSize();
+        // 监听窗口大小变化事件, 当窗口大小变化时, 调用resetFontSize函数
+        window.onresize = resetFontSize;
+    </script>
+</body>
+</html>
