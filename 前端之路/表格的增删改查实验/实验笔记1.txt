@@ -9,6 +9,13 @@
 - document.getElementById("table") 获取表格元素。
 - btn.parentNode.parentNode 从按钮定位到当前所在的 <tr> 行。
 - row.cells[index] 获取当前行中指定位置的单元格。
+- row.cells[i].querySelector('input')：`querySelector()` 的参数是一个 CSS 选择器字符串，这里传入 `'input'`，表示查找当前单元格中第一个 `<input>` 元素。
+  - 作用：返回匹配的第一个 DOM 元素（如果没有匹配则返回 `null`），方便读取 `value`。
+  - 常用参数：
+    - `'#id'`：按 id 查找元素
+    - `'.class'`：按类名查找元素
+    - `'tag'`：按标签名查找元素
+    - `'parent > child'`：按父子关系查找元素
 
 3. 增加功能
 - table.insertRow(length) 在表格末尾插入新行。
