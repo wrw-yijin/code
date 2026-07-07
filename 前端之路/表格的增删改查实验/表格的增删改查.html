@@ -11,6 +11,7 @@
         th, td {
             text-align: center;/* 居中对齐 */
         }
+
     </style>
 </head>
 <body>
@@ -30,7 +31,7 @@
         cellpadding：单元格内边距,设置为5时,单元格内的内容与边框之间有5px的间距,视觉效果良好
     ** -->
     <table id="table" border="1" cellspacing="0" cellpadding="5">
-        <thead>
+        <thead style="background-color: #26262638;">
             <tr>
                 <th>姓名</th>
                 <th>年龄</th>
@@ -52,6 +53,7 @@
             </tr>
         </tbody>
     </table>
+        <button onclick="submitForm(this)">提交</button>
     <script src="table.js"></script>
 </body>
 </html>

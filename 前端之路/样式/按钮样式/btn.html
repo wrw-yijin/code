@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML 按钮样式设置 · 示例集</title>
+    <style>
+        /* ===== 全局重置 & 基础 ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: #f8fafc;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 2rem 1rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            width: 100%;
+            background: white;
+            border-radius: 2rem;
+            box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.15);
+            padding: 2.5rem 2rem;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            color: #0f172a;
+            margin-bottom: 0.25rem;
+        }
+
+        .subtitle {
+            color: #64748b;
+            font-size: 1rem;
+            margin-bottom: 2.5rem;
+            border-left: 4px solid #3b82f6;
+            padding-left: 1rem;
+        }
+
+        /* ===== 按钮网格 ===== */
+        .button-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem 1.5rem;
+        }
+
+        .card {
+            background: #ffffff;
+            border-radius: 1.25rem;
+            padding: 1.5rem 1.25rem 1.75rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+            border: 1px solid #e9edf2;
+            transition: box-shadow 0.2s ease, transform 0.15s ease;
+            cursor: default;
+        }
+
+        .card:hover {
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+            transform: translateY(-2px);
+        }
+
+        .card-title {
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            color: #475569;
+            margin-bottom: 1.25rem;
+            border-bottom: 1px dashed #dce1e8;
+            padding-bottom: 0.6rem;
+        }
+
+        .button-group {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 0.8rem 1rem;
+        }
+
+        /* ===== 基础按钮重置 ===== */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.4rem;
+            font-family: inherit;
+            font-size: 0.95rem;
+            font-weight: 500;
+            padding: 0.6rem 1.2rem;
+            border-radius: 9999px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            white-space: nowrap;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.02);
+            background: #f1f5f9;
+            color: #1e293b;
+            position: relative;
+        }
+
+        .btn:active {
+            transform: scale(0.96);
+        }
+
+        /* 按钮点击后显示提示标记 */
+        .btn-clicked {
+            outline: 2px solid #3b82f6;
+            outline-offset: 2px;
+        }
+
+        /* 尺寸变体 */
+        .btn-sm {
+            font-size: 0.8rem;
+            padding: 0.35rem 0.9rem;
+        }
+
+        .btn-lg {
+            font-size: 1.1rem;
+            padding: 0.75rem 1.8rem;
+        }
+
+        /* ===== 1. 纯色风格 (Solid) ===== */
+        .btn-primary {
+            background: #3b82f6;
+            color: white;
+            box-shadow: 0 4px 10px -2px rgba(59, 130, 246, 0.3);
+        }
+        .btn-primary:hover {
+            background: #2563eb;
+            box-shadow: 0 8px 18px -4px rgba(59, 130, 246, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .btn-success {
+            background: #22c55e;
+            color: white;
+            box-shadow: 0 4px 10px -2px rgba(34, 197, 94, 0.3);
+        }
+        .btn-success:hover {
+            background: #16a34a;
+            box-shadow: 0 8px 18px -4px rgba(34, 197, 94, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .btn-danger {
+            background: #ef4444;
+            color: white;
+            box-shadow: 0 4px 10px -2px rgba(239, 68, 68, 0.3);
+        }
+        .btn-danger:hover {
+            background: #dc2626;
+            box-shadow: 0 8px 18px -4px rgba(239, 68, 68, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .btn-warning {
+            background: #f59e0b;
+            color: #0f172a;
+            box-shadow: 0 4px 10px -2px rgba(245, 158, 11, 0.3);
+        }
+        .btn-warning:hover {
+            background: #d97706;
+            box-shadow: 0 8px 18px -4px rgba(245, 158, 11, 0.4);
+            transform: translateY(-2px);
+        }
+
+        /* ===== 2. 轮廓风格 (Outline) ===== */
+        .btn-outline-primary {
+            background: transparent;
+            color: #3b82f6;
+            border: 2px solid #3b82f6;
+            box-shadow: none;
+        }
+        .btn-outline-primary:hover {
+            background: #3b82f6;
+            color: white;
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.25);
+        }
+
+        .btn-outline-success {
+            background: transparent;
+            color: #22c55e;
+            border: 2px solid #22c55e;
+        }
+        .btn-outline-success:hover {
+            background: #22c55e;
+            color: white;
+            box-shadow: 0 4px 12px rgba(34, 197, 94, 0.25);
+        }
+
+        .btn-outline-danger {
+            background: transparent;
+            color: #ef4444;
+            border: 2px solid #ef4444;
+        }
+        .btn-outline-danger:hover {
+            background: #ef4444;
+            color: white;
+            box-shadow: 0 4px 12px rgba(239, 68, 68, 0.25);
+        }
+
+        .btn-outline-warning {
+            background: transparent;
+            color: #d97706;
+            border: 2px solid #d97706;
+        }
+        .btn-outline-warning:hover {
+            background: #d97706;
+            color: white;
+            box-shadow: 0 4px 12px rgba(217, 119, 6, 0.25);
+        }
+
+        /* ===== 3. 柔和风格 (Soft / Ghost) ===== */
+        .btn-soft-primary {
+            background: #dbeafe;
+            color: #1e40af;
+        }
+        .btn-soft-primary:hover {
+            background: #bfdbfe;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);
+        }
+
+        .btn-soft-success {
+            background: #dcfce7;
+            color: #166534;
+        }
+        .btn-soft-success:hover {
+            background: #bbf7d0;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(34, 197, 94, 0.15);
+        }
+
+        .btn-soft-danger {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+        .btn-soft-danger:hover {
+            background: #fecaca;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(239, 68, 68, 0.15);
+        }
+
+        .btn-soft-warning {
+            background: #fef3c7;
+            color: #92400e;
+        }
+        .btn-soft-warning:hover {
+            background: #fde68a;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(245, 158, 11, 0.15);
+        }
+
+        /* ===== 4. 带图标 (Icon) ===== */
+        .btn-icon {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-icon svg {
+            width: 18px;
+            height: 18px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        /* ===== 5. 禁用状态 ===== */
+        .btn:disabled,
+        .btn[disabled] {
+            opacity: 0.5;
+            pointer-events: none;
+            filter: grayscale(0.3);
+            transform: none !important;
+            box-shadow: none !important;
+        }
+
+        /* ===== 6. 自定义 — 渐变 + 阴影 ===== */
+        .btn-gradient {
+            background: linear-gradient(135deg, #8b5cf6, #6d28d9);
+            color: white;
+            border: none;
+            box-shadow: 0 6px 14px rgba(107, 70, 193, 0.35);
+        }
+        .btn-gradient:hover {
+            background: linear-gradient(135deg, #7c3aed, #5b21b6);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 24px -6px rgba(107, 70, 193, 0.5);
+        }
+
+        .btn-ghost {
+            background: transparent;
+            color: #334155;
+            border: 1px solid #cbd5e1;
+        }
+        .btn-ghost:hover {
+            background: #f1f5f9;
+            border-color: #94a3b8;
+        }
+
+        .btn-link {
+            background: transparent;
+            color: #3b82f6;
+            text-decoration: underline;
+            text-underline-offset: 4px;
+            box-shadow: none;
+            border-radius: 0;
+            padding: 0.2rem 0.4rem;
+        }
+        .btn-link:hover {
+            color: #1d4ed8;
+            background: transparent;
+            text-decoration: underline;
+        }
+
+        /* ===== 响应式微调 ===== */
+        @media (max-width: 480px) {
+            .container {
+                padding: 1.5rem 1rem;
+            }
+            .button-group {
+                gap: 0.6rem;
+            }
+            .btn {
+                font-size: 0.85rem;
+                padding: 0.5rem 1rem;
+            }
+        }
+
+        /* ===== 控制台提示样式 ===== */
+        .console-hint {
+            margin-top: 2rem;
+            padding: 1rem 1.5rem;
+            background: #1e293b;
+            border-radius: 0.75rem;
+            color: #e2e8f0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+        .console-hint .icon {
+            font-size: 1.5rem;
+        }
+        .console-hint .text {
+            opacity: 0.8;
+        }
+        .console-hint .key {
+            background: #334155;
+            padding: 0.2rem 0.6rem;
+            border-radius: 0.3rem;
+            color: #facc15;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>🎨 按钮样式库</h1>
+    <div class="subtitle">点击任意按钮 → 控制台输出该按钮的完整 HTML 代码</div>
+
+    <!-- 控制台操作提示 -->
+    <div class="console-hint">
+        <span class="icon">⌨️</span>
+        <span class="text">点击任意按钮，打开浏览器控制台（</span>
+        <span class="key">F12</span>
+        <span class="text">）查看生成的代码</span>
+    </div>
+
+    <div class="button-grid">
+        <!-- 卡片 1: 纯色 -->
+        <div class="card">
+            <div class="card-title">纯色 · Solid</div>
+            <div class="button-group">
+                <button class="btn btn-primary" data-name="主要按钮">主要</button>
+                <button class="btn btn-success" data-name="成功按钮">成功</button>
+                <button class="btn btn-danger" data-name="危险按钮">危险</button>
+                <button class="btn btn-warning" data-name="警告按钮">警告</button>
+            </div>
+        </div>
+
+        <!-- 卡片 2: 轮廓 -->
+        <div class="card">
+            <div class="card-title">轮廓 · Outline</div>
+            <div class="button-group">
+                <button class="btn btn-outline-primary" data-name="轮廓主要按钮">主要</button>
+                <button class="btn btn-outline-success" data-name="轮廓成功按钮">成功</button>
+                <button class="btn btn-outline-danger" data-name="轮廓危险按钮">危险</button>
+                <button class="btn btn-outline-warning" data-name="轮廓警告按钮">警告</button>
+            </div>
+        </div>
+
+        <!-- 卡片 3: 柔和 / Ghost -->
+        <div class="card">
+            <div class="card-title">柔和 · Soft</div>
+            <div class="button-group">
+                <button class="btn btn-soft-primary" data-name="柔和主要按钮">主要</button>
+                <button class="btn btn-soft-success" data-name="柔和成功按钮">成功</button>
+                <button class="btn btn-soft-danger" data-name="柔和危险按钮">危险</button>
+                <button class="btn btn-soft-warning" data-name="柔和警告按钮">警告</button>
+            </div>
+        </div>
+
+        <!-- 卡片 4: 尺寸 & 图标 -->
+        <div class="card">
+            <div class="card-title">尺寸 &amp; 图标</div>
+            <div class="button-group">
+                <button class="btn btn-primary btn-sm" data-name="小号按钮">小号</button>
+                <button class="btn btn-primary" data-name="默认按钮">默认</button>
+                <button class="btn btn-primary btn-lg" data-name="大号按钮">大号</button>
+                <button class="btn btn-success btn-icon" data-name="带图标完成按钮">
+                    <svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>
+                    完成
+                </button>
+            </div>
+        </div>
+
+        <!-- 卡片 5: 禁用 & 特殊 -->
+        <div class="card">
+            <div class="card-title">状态 &amp; 特殊</div>
+            <div class="button-group">
+                <button class="btn btn-primary" disabled data-name="禁用按钮（主要）">禁用</button>
+                <button class="btn btn-outline-danger" disabled data-name="禁用按钮（轮廓危险）">禁用</button>
+                <button class="btn btn-gradient" data-name="渐变按钮">渐变</button>
+                <button class="btn btn-ghost" data-name="幽灵按钮">幽灵</button>
+                <button class="btn btn-link" data-name="链接样式按钮">链接样式</button>
+            </div>
+        </div>
+
+        <!-- 卡片 6: 混合展示 — 更多图标示例 -->
+        <div class="card">
+            <div class="card-title">带图标 · 实用组合</div>
+            <div class="button-group">
+                <button class="btn btn-primary btn-icon" data-name="上传按钮">
+                    <svg viewBox="0 0 24 24"><path d="M4 4v16h16"/><polyline points="20,10 12,18 8,14"/></svg>
+                    上传
+                </button>
+                <button class="btn btn-danger btn-icon" data-name="删除按钮">
+                    <svg viewBox="0 0 24 24"><path d="M3 6h18"/><path d="M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6"/><path d="M8 6V4a2 2 0 012-2h4a2 2 0 012 2v2"/></svg>
+                    删除
+                </button>
+                <button class="btn btn-outline-primary btn-icon" data-name="新增按钮">
+                    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v8"/><path d="M8 12h8"/></svg>
+                    新增
+                </button>
+                <button class="btn btn-soft-success btn-icon" data-name="保存按钮">
+                    <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                    保存
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 底部额外说明 -->
+    <div style="margin-top: 2.8rem; padding-top: 1rem; border-top: 1px solid #e9edf2; display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: space-between; align-items: center;">
+        <p style="color: #64748b; font-size: 0.9rem;">
+            ⚡ 所有按钮均采用 <code style="background: #eef2f6; padding: 0.2rem 0.5rem; border-radius: 30px; font-size: 0.8rem;">border-radius: 9999px</code> 胶囊风格
+        </p>
+        <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+            <span style="background: #f1f5f9; padding: 0.2rem 1rem; border-radius: 30px; font-size: 0.8rem; color: #334155;">hover 上浮</span>
+            <span style="background: #f1f5f9; padding: 0.2rem 1rem; border-radius: 30px; font-size: 0.8rem; color: #334155;">点击缩放</span>
+            <span style="background: #f1f5f9; padding: 0.2rem 1rem; border-radius: 30px; font-size: 0.8rem; color: #334155;">阴影过渡</span>
+        </div>
+    </div>
+</div>
+
+<script>
+    (function() {
+        'use strict';
+
+        // 获取所有按钮（除了禁用状态的）
+        const allButtons = document.querySelectorAll('.btn:not(:disabled):not([disabled])');
+
+        // 生成按钮的完整 HTML 代码
+        function generateButtonHTML(button) {
+            // 克隆节点，避免修改原始元素
+            const clone = button.cloneNode(true);
+            
+            // 移除可能存在的点击高亮类
+            clone.classList.remove('btn-clicked');
+            
+            // 如果有 data-name 属性，保留它
+            // 但生成时我们使用 outerHTML
+            
+            // 获取完整的 HTML 字符串
+            let html = clone.outerHTML;
+            
+            // 美化输出：添加换行和缩进
+            return html;
+        }
+
+        // 生成按钮的 CSS 类信息
+        function generateButtonInfo(button) {
+            const classes = Array.from(button.classList).filter(c => c !== 'btn-clicked');
+            const text = button.textContent.trim();
+            const name = button.dataset.name || text || '未命名按钮';
+            
+            return {
+                name: name,
+                text: text,
+                classes: classes,
+                html: generateButtonHTML(button),
+                isDisabled: button.disabled || button.hasAttribute('disabled')
+            };
+        }
+
+        // 输出到控制台
+        function logButtonInfo(button) {
+            const info = generateButtonInfo(button);
+            
+            console.log('='.repeat(60));
+            console.log(`🔘 ${info.name}`);
+            console.log('-'.repeat(60));
+            
+            // 输出 HTML 代码
+            console.log('📄 HTML 代码:');
+            console.log(info.html);
+            
+            // 输出 CSS 类
+            console.log('🎨 CSS 类名:', info.classes.join(' '));
+            
+            // 输出提示
+            console.log('💡 提示: 直接复制上面的 HTML 代码即可使用该按钮');
+            console.log('='.repeat(60));
+            
+            // 在控制台中高亮显示
+            console.log('%c✅ 已复制按钮信息到控制台', 'color: #22c55e; font-size: 14px; font-weight: bold;');
+        }
+
+        // 为每个按钮添加点击事件
+        allButtons.forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.stopPropagation();
+                
+                // 移除其他按钮的高亮
+                document.querySelectorAll('.btn-clicked').forEach(el => {
+                    el.classList.remove('btn-clicked');
+                });
+                
+                // 高亮当前点击的按钮
+                this.classList.add('btn-clicked');
+                
+                // 输出到控制台
+                logButtonInfo(this);
+                
+                // 同时输出到页面上的一个隐藏区域（可选）
+                // 这里我们不额外处理
+            });
+        });
+
+        // 如果点击卡片或容器，不清除高亮（保留）
+        console.log('%c🎯 按钮代码生成器已启动！', 'color: #3b82f6; font-size: 16px; font-weight: bold;');
+        console.log('%c💡 点击任意按钮，控制台将输出该按钮的完整 HTML 代码', 'color: #64748b; font-size: 13px;');
+        console.log('%c📋 提示：按下 F12 打开控制台查看输出', 'color: #f59e0b; font-size: 13px;');
+
+        // 额外功能：键盘快捷键 'C' 清除高亮
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'c' || e.key === 'C') {
+                if (!e.ctrlKey && !e.metaKey) {
+                    document.querySelectorAll('.btn-clicked').forEach(el => {
+                        el.classList.remove('btn-clicked');
+                    });
+                    console.log('%c🧹 已清除所有按钮高亮', 'color: #94a3b8; font-size: 13px;');
+                }
+            }
+        });
+
+        // 页面加载完成后，输出欢迎信息
+        console.log('按 C 键可清除按钮高亮状态');
+    })();
+</script>
+
+</body>
+</html>
